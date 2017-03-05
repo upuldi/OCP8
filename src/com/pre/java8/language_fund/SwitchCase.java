@@ -5,6 +5,8 @@ package com.pre.java8.language_fund;
  */
 public class SwitchCase {
 
+    enum MyEnum {A, B, C, D, E}
+
     public static void main(String[] args) {
 
         /**
@@ -25,14 +27,32 @@ public class SwitchCase {
          *
          */
 
+        //Enum usage
+        MyEnum myEnumVal = MyEnum.A;
+        switch (myEnumVal) {
+            case A:
+                break;
+            case B:
+                break;
+            case C:
+                break;
+            case D:
+                break;
+            default:
+                break;
+
+        }
+
         //valid definitions
 
         //With a constant in the switch
-        switch(15) {}
+        switch (15) {
+        }
 
         //Wo body
         int x = 10;
-        switch (x) {}
+        switch (x) {
+        }
 
         //No content for the case statements and no default statement
         int y = 10;
@@ -43,7 +63,7 @@ public class SwitchCase {
         }
 
         //Only with default
-        switch(x) {
+        switch (x) {
             default:
         }
 
@@ -55,12 +75,12 @@ public class SwitchCase {
             case byteVal:
         }
 
-        switch(byteVal) {
+        switch (byteVal) {
             case intSwitchVal:
         }
 
         //multi lines in case with out {}
-        switch(100) {
+        switch (100) {
             case 125:
                 System.out.println("One line");
                 System.out.println("another line");
@@ -70,9 +90,13 @@ public class SwitchCase {
                 System.out.println("another default line");
         }
 
+        //With null variable value for switch
+        String nullSwitchValue = null;
+        switch (nullSwitchValue) {
+        }
 
         //Default can be in anywhere
-        switch(1500) {
+        switch (1500) {
             default:
                 System.out.println("Default first");
                 break;
@@ -82,29 +106,39 @@ public class SwitchCase {
         }
 
 
-
-
-        //Invalid Definitions
+        /**
+         * Invalid Switch Definitions
+         *
+         */
 
         //No Constants for the case
         int notAConstant = 100;
         switch (x) {
-//             case notAConstant:
+            //case notAConstant:
         }
+
+        //Null case statement
+        final String nullString = null;
+        switch ("ABCD") {
+            //    case nullString:
+        }
+
+        //null with switch
+        //switch (null){}
 
         //Different types in switch and case statements
         String swtichStringVal = "ABC";
         final int invalidIntForStringSwitch = 100;
-        switch(swtichStringVal) {
+        switch (swtichStringVal) {
             //case invalidIntForStringSwitch:
         }
-
 
 
     }
 
     /**
      * The following also invalid
+     *
      * @param caseValue
      */
     private void someStupidMethod(final String caseValue) {
@@ -112,4 +146,26 @@ public class SwitchCase {
             //case caseValue: //Here the case value is not a true constant
         }
     }
+
+    /**
+     * Here this is not a constant expression. Compile time error
+     */
+    private void anotherExample() {
+
+        for (int i = 0; i < 100; i++) {
+
+            //This is not a constant expression
+            final int caseValue = i;
+
+            switch (i) {
+                // case caseValue:
+            }
+
+        }
+
+    }
+
+
+
+
 }

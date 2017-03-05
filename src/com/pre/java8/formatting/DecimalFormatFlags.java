@@ -36,5 +36,36 @@ public class DecimalFormatFlags {
         DecimalFormat zeroTest = new DecimalFormat(",00.00");
         System.out.println("Zero Test: " + zeroTest.format(d));
 
+
+        /**
+         * Other Flags
+         */
+        double doubleValue = 1234546.12345;
+
+        /**
+         * Zero pattern - always put zeros before and after
+         * Minus sign always put zeros
+         */
+        String minusSign = "-000,000,000.000000";
+        System.out.println(new DecimalFormat(minusSign).format(123.234));
+
+        /**
+         * You can use percentage sign as a prefix or as a suffix
+         * It does multiply the value by 100 times as well
+         */
+        String percentage_prefix_or_suffix = "%0000.000000";
+        double percentageDoubleValue = 0.025;
+        System.out.println(new DecimalFormat(percentage_prefix_or_suffix).format(percentageDoubleValue));
+
+        /**
+         * \u2030 multiply it by 1000
+         */
+        String perMileAndMultiBy1000 = "\u2030###.###";
+        System.out.println(new DecimalFormat(perMileAndMultiBy1000).format(0.00012));
+
+        //Currency
+        String currencyFormat = "¤ ###,###.###";
+        System.out.println(new DecimalFormat(currencyFormat).format(23412.12121));
+
     }
 }
